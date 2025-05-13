@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  height: 80%;
+  padding: 2rem;
+  overflow: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+  width: 90%;
+  max-width: 330px;
+  padding-bottom: 1rem;
+}
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding-bottom: 0.5rem;
+}
+
+.heading {
+  color: #000;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px #00000050;
+}
+
+.input-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.inputBox {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  font-size: 1rem;
+}
+
+.inputBox::placeholder {
+  color: #555;
+}
+
+.add-icon {
+  height: 30px;
+  margin-top: 3px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.add-icon:hover {
+  transform: scale(1.1);
+}
+
+.task-list {
+  list-style-type: none;
+  max-height: 400px;
+  max-height: calc(100% - 130px);  
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+.task-list::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+li {
+  background: rgba(255, 255, 255, 0.25);
+  margin: 0.4rem 0;
+  padding: 0.6rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+}
+
+.delete-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.delete-icon:hover {
+  transform: scale(1.1);
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.github-btn {
+  position: fixed;
+  bottom: 10px; 
+  right: -100px;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #6985e1, #e2e2e2);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+}
+
+button a{
+  text-decoration: none;
+}
+
+.github-icon{
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  vertical-align: middle;
+}

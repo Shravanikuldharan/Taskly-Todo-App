@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glass To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <h1 class="heading">To-do App</h1>
+      <div class="input-section">
+          <input type="text" id="taskInput"  class="inputBox" placeholder="Enter a new task" />
+          <img src="img/add.png" class="add-icon" onclick="addTask()" alt="Add Task">
+      </div>
+    </div>
+  <ul id="taskList" class="task-list"></ul>
+  </div>
+  <footer>
+    <button class="github-btn">
+        <a href="#" target="_blank">
+        Check the source code
+        <img src="img/github-icon.png" alt="GitHub" class="github-icon">
+      </a>
+    </button>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
