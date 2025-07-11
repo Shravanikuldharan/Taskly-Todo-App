@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
   text-align: center;
   width: 90%;
-  max-width: 330px;
+  max-width: 350px;
   padding-bottom: 1rem;
 }
 
@@ -65,6 +65,21 @@ body {
   color: #555;
 }
 
+.no-tasks-img {
+  width: 250px;
+  margin: 1px auto;
+  display: block;
+}
+
+.no-tasks-text {
+  text-align: center;
+  color: #333;
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
 .add-icon {
   height: 30px;
   margin-top: 3px;
@@ -79,7 +94,7 @@ body {
 .task-list {
   list-style-type: none;
   max-height: 400px;
-  max-height: calc(100% - 130px);  
+  max-height: calc(100% - 130px);
   overflow-y: auto;
   scroll-behavior: smooth;
   padding-right: 10px;
@@ -102,15 +117,6 @@ li {
   color: #000;
 }
 
-.delete-icon {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.delete-icon:hover {
-  transform: scale(1.1);
-}
-
 .fade-in {
   animation: fadeIn 0.3s ease-in-out;
 }
@@ -128,7 +134,7 @@ li {
 
 .github-btn {
   position: fixed;
-  bottom: 10px; 
+  bottom: 10px;
   right: -100px;
   transform: translateX(-50%);
   padding: 10px 20px;
@@ -140,13 +146,37 @@ li {
   z-index: 999;
 }
 
-button a{
+button a {
   text-decoration: none;
 }
 
-.github-icon{
+.github-icon {
   width: 30px;
   height: 30px;
   margin-left: 10px;
   vertical-align: middle;
+}
+
+.delete-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.delete-icon:hover {
+  transform: scale(1.1);
+}
+
+.edit-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.edit-icon:hover {
+  transform: scale(1.1);
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

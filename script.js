@@ -1,9 +1,12 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-document.addEventListener("DOMContentLoaded", renderTasks);
+
+document.addEventListener("DOMContentLoaded", function () {
+  renderTasks();
+});
 
 function addTask() {
-  const input = document.getElementById("taskInput");
-  const taskText = input.value.trim();
+  let input = document.getElementById("taskInput");
+  let taskText = input.value.trim();
 
   if (taskText === "") {
     alert("Please enter a task.");
@@ -18,36 +21,62 @@ function addTask() {
 }
 
 function deleteTask(button) {
-  const li = button.parentElement;
-  const taskText = li.firstChild.textContent.trim();
-  tasks = tasks.filter(task => task !== taskText);
+  let li = button.closest("li");
+  let taskText = li.querySelector(".task-text").innerText;
+
+  let newTasks = [];
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i] !== taskText) {
+      newTasks.push(tasks[i]);
+    }
+  }
+  tasks = newTasks;
   updateLocalStorage();
   renderTasks();
 }
 
+function editTask(button) {
+  let li = button.closest("li");
+  let taskText = li.querySelector(".task-text").innerText;
+
+  let newTask = prompt("Edit your task:", taskText);
+
+  if (newTask !== null && newTask.trim() !== "") {
+    let index = tasks.indexOf(taskText);
+    if (index !== -1) {
+      tasks[index] = newTask.trim();
+      updateLocalStorage();
+      renderTasks();
+    }
+  }
+}
+
 function renderTasks() {
-  const taskList = document.getElementById("taskList");
+  let taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
 
-  tasks.forEach(task => {
-    const li = document.createElement("li");
-    li.classList.add("fade-in");
+  for (let i = 0; i < tasks.length; i++) {
+    taskList.innerHTML +=
+      '<li class="fade-in">' +
+      '<span class="task-text">' +
+      tasks[i] +
+      "</span>" +
+      '<span class="icon-group">' +
+      '<img src="img/edit.png" class="edit-icon" height="22" title="Edit Task" onclick="editTask(this)">' +
+      '<img src="img/delete.png" class="delete-icon" height="22" title="Delete Task" onclick="deleteTask(this)">' +
+      "</span>" +
+      "</li>";
+  }
 
-    const textNode = document.createTextNode(task);
-    const img = document.createElement("img");
-
-    img.src = "img/delete.png";
-    img.height = 25;
-    img.title = "Delete Task";
-    img.classList.add("delete-icon");
-    img.onclick = function () {
-      deleteTask(this);
-    };
-
-    li.appendChild(textNode);
-    li.appendChild(img);
-    taskList.appendChild(li);
-  });
+  let noTasksImage = document.getElementById("noTasksImage");
+  let noTasksText = document.getElementById("noTasksText");
+  if (tasks.length === 0) {
+    noTasksImage.style.display = "block";
+    noTasksText.style.display = "block";
+  } else {
+    noTasksImage.style.display = "none";
+    noTasksText.style.display = "none";
+  }
 }
 
 function updateLocalStorage() {
